@@ -6,3 +6,5 @@ js<-'{
 
 df <- fromJSON(js,simplify = T)
 df
+df<-as.data.frame(do.call("cbind", df))
+df
