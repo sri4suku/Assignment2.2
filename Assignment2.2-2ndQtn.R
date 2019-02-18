@@ -3,8 +3,10 @@ js<-'{
 "opening_weekend_take": 1234, "year": 2011,
 "release_date_wide": "2011-09-16", "gross": 59954
 }'
-
-df <- fromJSON(js,simplify = T)
-df
-df<-as.data.frame(do.call("cbind", df))
+#Converts the json string to list
+lst <- fromJSON(js,simplify=T)
+#replace all the NULL value to NA
+lst<-replace(lst, lst=="NULL", NA)
+#converts list to dataframe in column wise
+df<-as.data.frame(do.call("cbind", lst))
 df
